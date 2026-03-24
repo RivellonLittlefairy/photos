@@ -1,0 +1,25 @@
+{
+  "name": "time-line-web",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @timeline/server\" \"npm run dev -w @timeline/web\"",
+    "dev:web": "npm run dev -w @timeline/web",
+    "dev:server": "npm run dev -w @timeline/server",
+    "import:photos": "npm run import:photos -w @timeline/server --",
+    "backfill:stage-month": "npm run backfill:stage-month -w @timeline/server",
+    "backfill:content-hash": "npm run backfill:content-hash -w @timeline/server",
+    "reset:data": "npm run reset:data -w @timeline/server",
+    "build": "npm run build -w @timeline/shared && npm run build -w @timeline/server && npm run build -w @timeline/web",
+    "typecheck": "npm run typecheck -w @timeline/shared && npm run typecheck -w @timeline/server && npm run typecheck -w @timeline/web",
+    "lint": "npm run lint -ws"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "typescript": "^5.9.3"
+  }
+}

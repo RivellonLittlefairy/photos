@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#777b7c",
+              "on-tertiary-container": "#5b4400",
+              "on-secondary-fixed-variant": "#006a5a",
+              "error-dim": "#821a01",
+              "secondary-dim": "#005e51",
+              "on-background": "#2f3334",
+              "on-tertiary-fixed-variant": "#674d00",
+              "surface-container": "#eceeee",
+              "secondary-fixed-dim": "#5aeed2",
+              "tertiary": "#795a00",
+              "surface-container-high": "#e6e8e9",
+              "on-error": "#fff7f6",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#ffaba8",
+              "on-secondary-container": "#005f51",
+              "surface-bright": "#f9f9f9",
+              "primary": "#b62430",
+              "on-primary": "#fff7f6",
+              "background": "#f9f9f9",
+              "inverse-on-surface": "#9c9d9d",
+              "on-error-container": "#671200",
+              "primary-fixed": "#ffaba8",
+              "secondary-container": "#6bfde0",
+              "on-primary-fixed-variant": "#90001b",
+              "error-container": "#fa7150",
+              "on-surface-variant": "#5c6060",
+              "on-tertiary": "#fff8f0",
+              "surface-container-highest": "#e0e3e4",
+              "surface-dim": "#d7dbdb",
+              "error": "#aa371c",
+              "primary-dim": "#a51526",
+              "on-secondary": "#e3fff6",
+              "on-surface": "#2f3334",
+              "tertiary-fixed": "#f9cc61",
+              "on-primary-fixed": "#58000c",
+              "surface-tint": "#b62430",
+              "on-tertiary-fixed": "#443100",
+              "on-primary-container": "#7f0016",
+              "on-secondary-fixed": "#004a3f",
+              "tertiary-dim": "#6a4f00",
+              "tertiary-fixed-dim": "#eabe55",
+              "surface-container-low": "#f3f4f4",
+              "tertiary-container": "#f9cc61",
+              "outline-variant": "#afb2b3",
+              "secondary": "#006c5c",
+              "surface-variant": "#e0e3e4",
+              "secondary-fixed": "#6bfde0",
+              "inverse-surface": "#0c0f0f",
+              "surface": "#f9f9f9",
+              "primary-fixed-dim": "#ff9694",
+              "inverse-primary": "#ff5a5f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .masonry-grid {
+            columns: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 768px) { .masonry-grid { columns: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { columns: 3; } }
+        @media (min-width: 1280px) { .masonry-grid { columns: 4; } }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-sm flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">生活档案</span>
+<div class="hidden md:flex items-center gap-8 font-plus-jakarta text-sm font-medium">
+<a class="text-rose-600 dark:text-rose-400 border-b-2 border-rose-600/30 dark:border-rose-400/30 transition-all" href="#">主页</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border-b-2 border-transparent" href="#">时间轴</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border-b-2 border-transparent" href="#">相册</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors border-b-2 border-transparent" href="#">收藏</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low rounded-sm text-sm focus:outline-none focus:ring-1 focus:ring-primary/20 w-64 border-none transition-all" placeholder="快速搜索..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:bg-slate-100/50 dark:hover:bg-slate-800/50 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="filter_list">filter_list</span></button>
+<button class="hover:bg-slate-100/50 dark:hover:bg-slate-800/50 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span></button>
+<button class="hover:bg-slate-100/50 dark:hover:bg-slate-800/50 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="location_on">location_on</span></button>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="个人资料" class="h-full w-full object-cover" data-alt="User profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfeHFXVYIMPjYF7ZAH12U_IZKJz2uzyCYwf6ObMdplIE9uJ1nIh2KTuzrq51A0-JL9H0c4xNFZSwKaQojZaCrRou98aT1YcmfS1BkF_pyL2xjuxGPVzumOCu1l5vz8gM7IBk8Nc4_LUOulMYYp7XE4qPH2e5DGzoKCHnTq_hWM7wDjj2C43LZZJBZdpJgyGTAreMs_d3LrahL0_HDWEzvA69OJnoiB8dYCXRUuJeLwSB1VMvKvzlULXyZJJSguok4xiheCCezVU1OG"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 bg-slate-50 dark:bg-slate-950 border-r border-slate-200/20 dark:border-slate-800/20 h-screen w-20 flex flex-col items-center py-8 pt-28">
+<div class="mb-12 flex flex-col items-center text-center px-2">
+<span class="material-symbols-outlined text-teal-700 dark:text-teal-400 mb-1" style="font-variation-settings: 'FILL' 1;">auto_awesome_motion</span>
+<span class="font-plus-jakarta text-[10px] uppercase tracking-widest text-on-surface-variant">时间轴</span>
+</div>
+<nav class="flex flex-col gap-6 items-center">
+<div class="group relative flex flex-col items-center gap-1">
+<button class="bg-teal-100/50 dark:bg-teal-900/30 text-teal-800 dark:text-teal-200 rounded-full p-3 transition-all hover:scale-110 active:scale-95">
+<span class="material-symbols-outlined" data-icon="today">today</span>
+</button>
+<span class="font-plus-jakarta text-[10px] text-teal-800 dark:text-teal-200">2024年</span>
+</div>
+<div class="group relative flex flex-col items-center gap-1">
+<button class="text-slate-400 dark:text-slate-600 p-3 hover:text-teal-600 dark:hover:text-teal-300 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<span class="font-plus-jakarta text-[10px] text-slate-400">2023年</span>
+</div>
+<div class="group relative flex flex-col items-center gap-1">
+<button class="text-slate-400 dark:text-slate-600 p-3 hover:text-teal-600 dark:hover:text-teal-300 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+</button>
+<span class="font-plus-jakarta text-[10px] text-slate-400">2022年</span>
+</div>
+<div class="group relative flex flex-col items-center gap-1">
+<button class="text-slate-400 dark:text-slate-600 p-3 hover:text-teal-600 dark:hover:text-teal-300 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</button>
+<span class="font-plus-jakarta text-[10px] text-slate-400">2021年</span>
+</div>
+<div class="group relative flex flex-col items-center gap-1">
+<button class="text-slate-400 dark:text-slate-600 p-3 hover:text-teal-600 dark:hover:text-teal-300 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="auto_awesome_motion">auto_awesome_motion</span>
+</button>
+<span class="font-plus-jakarta text-[10px] text-slate-400">更早</span>
+</div>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="ml-20 pt-24 px-8 pb-12">
+<!-- Editorial Header -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="font-headline text-5xl font-extrabold text-on-surface tracking-tight mb-2">清晨的落日</h1>
+<p class="font-body text-on-surface-variant max-w-md">记录您近期在沿海高地的秋季逃离时光中捕捉到的精彩瞬间。</p>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+<button class="px-5 py-2 bg-primary text-on-primary rounded-full text-sm font-medium whitespace-nowrap shadow-md shadow-primary/20">所有照片</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors">人像</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors">自然</button>
+<button class="px-5 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium whitespace-nowrap hover:bg-surface-container-highest transition-colors">旅行</button>
+<button class="px-3 py-2 bg-surface-container-low text-on-surface-variant rounded-full"><span class="material-symbols-outlined text-sm">tune</span></button>
+</div>
+</div>
+</header>
+<!-- Masonry Gallery -->
+<div class="masonry-grid">
+<!-- Item 1 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dramatic mountain landscape at sunset with lake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOPxDJJ-udCMX30o9S8YK2I8KV2zuBIoXA4yBo08Ns33tNkSGD4SGPExm26kXD7bciUnXIOqPnCjhlTtMvue2lLGfypNBqwTRNomEOTcGvjUeQ6ZLf6UUPyNY1LdQ_tgQqOEbcxKpHVQ7mKSlekdd6aOmBIhUhYTNjMSpDz5RsDbwI-fwMKMpHXPr-xuyl9KuS9zZkqzI4vMyWpihY3Yw3Alp9_6Im60JFFKP6ft_xo02UO6motmO0NgBBsKWNw0WZrlxOVtmPK77d"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline text-lg font-bold">绯红之巅</h3>
+<button class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span></button>
+</div>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年10月12日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 瑞士阿尔卑斯山</span>
+</div>
+</div>
+<!-- Overlapping Detail -->
+<div class="absolute top-4 left-4 bg-white/40 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase text-white shadow-sm">精选内容</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[1/1] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sunlight filtering through dense green forest trees" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOdgMl6LzC7a9_uezt6mu6gA7IjrhJFHB_P0HkCqPkWwl5YcH6XTDr_JAa9tvwW483rpgGScUkYq4otLPViR9hRVY7W-FGmpcVQmlivbfjGnLGw7hiF-HkALcvk_ka6yUfI8oCI54RwY_-AeKl9eOrRQkGzS8Vlf15Bnc-MT8OQxeFSD2R-IPMDsGQCNJ1almocTyV42_5Qjr82q8xiduQ97Wk-ZyQ9k_vlz1TFKGtl2Y-0Qt8izPdLW-NDWSqgBr3GkkoUzJnd8NE"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">森林深处</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年10月08日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 俄勒冈海岸</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[3/4] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a warm coffee mug on a wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-IycR6uV2mFgioQN4xQlPTF4npcgDX2EthWRGpooxafWZ-_5rp6661Ls9cCnDNcOdApIZHIo_w2XqqE1Tjh5zgXfOcYpof3c7Zh4TE1eCssdytcydAMYAcRqHn3fzQn52hplaRAjzKbY79n1uzuE_LNAKzgc5vC9YhiEg7qTPxsIxk2e1rbYT7hChEjE2G7bC89A0pbhBeLvc-7L1fD3c5NU3d3HIcqVqEos-J5c6q6WF7TUPEvAj1H-NpaDNO3qthqE1D-feD5Dp"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">木屋晨光</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年10月05日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 阿斯彭, 科罗拉多州</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[16/9] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Serene mountain house reflecting in a still lake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh8uvC7DDUvuCRtp_Glz_thRPKbwpIQaoQ60bld2PvP256FVFfQ9LGAYHP_ZWcFvEuI6ymXcQ6Iu7nPAfvmTOjwNisBysIudmie1m7nIm9r3qhxSzz-_ZKWwWaz4qzORa55w2OkxZYW0yOHGKMN-iC7srfYSJPJ5KNNV8hMs42iFP6GvhwXOBOQjYLCxy-QwVTJPMV-9rjWi-6_jbo55XZZFwS5zNJhPl2iwZE8niUp9b-ixQF705M8rsLla-FqtkonFbANyGkHUlc"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">湖畔回响</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年9月28日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 挪威</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[4/5] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Aerial view of turquoise tropical islands" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Ps7rCERjFGT7NGnhWkk6Q3LczAXEj-ti2W05ggrX0PbXjvnqH8tseD3VK2Xgq3krS3NrDD_dlKpSjOOAZ26Yd-pEb_KeCNMGDIDr4CqtudG7vgAM_pMTOtcHbvAhTH4-rb1VMgkUdJuFB6nWXCRByTyjBgR7DY8Lub_uEn_5LWbR-EQWD1ZjcGrXB0lq8w9kG8S8QzAvOVO39m-N_yhv1JG-TbM2zK1uz4gn4qMlDMloFqkKXcT6Ynmew5pL2LAgg0Y4a-YVmEPz"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">蔚蓝逃离</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年9月15日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 马尔代夫</span>
+</div>
+</div>
+<!-- Overlapping Anniversary Marker -->
+<div class="absolute -bottom-2 -right-2 bg-tertiary-container text-on-tertiary-container px-4 py-1.5 rounded-full text-xs font-bold shadow-lg border-4 border-surface">旅行</div>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[1/1] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Person standing on a high mountain ridge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuErJP9_NHtFSu5F2pCocz5KxTM6ysln62AnKlE83ZkhxShOvCX-cehCFvQKfMiJIrOF92irmJzWxt5ACJqbzPIApTfsoWh41AvxYuDNEigouzQ6jpZkQxR3__4H0g6tYAM2aqqu9Rc3qKilZ_rn9o1gv6seglkbtqJ-3JopUnomjenqxqYidLy1JxnDD6nbXipS3IksKGCJxQsrgNrrkP5wdYkHAnRsZsnq-5iePleoWAfh22kRhbJPkvE-8Yio0Ol-UWSoejETm"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">高地之巅</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年9月02日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 锡安国家公园</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 7 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[3/4] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Eiffel Tower standing tall in Paris twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwXL8FSZiGv8jB7qD9BXDs37g5C_hZPAXXp0usRuMJ6VjWKVrvlj6Xp6YsL6lK01UXzl0bE8IW1FMzxRtWcZXZ7DmDyvkL2HZxnIIafgyqR_qhrsQcQbI0myh2OORLo-W3HCAQPEpCfeDfi4-OZHNJrRX3Pp4EaOanLH0d-UZ10po2XNB1fp07H_NI1itwlXWowfuPwydlO9trmitZadjLINsc3QJqIPPwTielMzDAV6t_ttD4oNayD3HPJ1BklP1ih0T6DcUe3ol3"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">午夜巴黎</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年8月24日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 法国, 巴黎</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 8 -->
+<div class="masonry-item group cursor-pointer">
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+<div class="aspect-[4/3] w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Two peak mountains overlooking a blue lake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4ZEc7DN0Nhx8PU1O_6LqWPfLy8yAdqwYVP1KoYZj0JRlICAm8pxPFQ2PlUckCkuZh4oc3M-HSnBx-py1_yYYF-xKzTkqUvWckS2ixWHBHHocLO00pOKH0-K0ob_glbdj_oRwAeBxI9I0ZEhe6rydmhVp-ez5bLPuPB-Z4SVf_Ervqvez0qd8gMq85k9G2Kha1cZ-CSo2edRDWCzo1Tu4FIIV647ZlT8dFDA167N2DHLQYagoZ8PgHeOpWEwSrx3MNUZ9iBRNlDRJS"/>
+</div>
+<div class="p-4">
+<h3 class="font-headline text-lg font-bold">双生尖峰</h3>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">calendar_today</span> 2024年8月18日</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> 加拿大, 班夫</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 bg-gradient-to-br from-primary to-primary-container h-16 w-16 rounded-full shadow-lg shadow-primary/30 flex items-center justify-center text-on-primary transition-transform hover:scale-110 active:scale-95 group z-50">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+<span class="absolute right-20 bg-on-surface text-surface text-xs font-bold px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">添加回忆</span>
+</button>
+</body></html>
