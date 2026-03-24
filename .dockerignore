@@ -1,0 +1,12 @@
+.git
+.gitignore
+node_modules
+**/node_modules
+apps/web/dist
+apps/web/design
+apps/server/dist
+packages/shared/dist
+npm-debug.log*
+.DS_Store
+.env
+**/.env
